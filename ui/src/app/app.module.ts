@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { CommentsComponent } from './comments/comments.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
     PostDetailComponent,
-    CommentsComponent
+    CommentsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
