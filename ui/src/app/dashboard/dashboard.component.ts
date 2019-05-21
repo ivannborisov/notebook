@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
 
   getPosts(): void { 
     this.postService.getPosts()
-      .subscribe(posts => this.posts = posts.slice(1,5));
+      .subscribe(posts => this.posts = posts.slice(0,5));
   }
 
 }

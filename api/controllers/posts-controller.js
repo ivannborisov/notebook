@@ -1,6 +1,6 @@
 let posts = [
-    { id: 11, title: 'Mr. Nice', created: new Date(), from: 'ivan@abv.bg' },
-    { id: 12, title: 'Narco' },
+    { id: 11, title: 'Kude se namira', created: new Date(), from: 'ivan@abv.bg' },
+    { id: 12, title: 'Narco 2' },
     { id: 13, title: 'Bombasto' },
     { id: 14, title: 'Celeritas' },
     { id: 15, title: 'Magneta' },
@@ -13,7 +13,7 @@ let posts = [
 
 
 function generateID () {
-    return  Math.random().toString(36).substr(2, 9);
+    return Math.floor((Math.random() * 100000000) + 1);
 };
 
 function getPosts (req, res) {

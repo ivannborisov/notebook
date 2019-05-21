@@ -3,19 +3,31 @@ import { Observable, of } from 'rxjs';
 import { POSTS } from './mock-posts';
 import { Post } from './post';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor() { }
+  private postUrl = 'http://localhost:3000/api/posts';
+
+  constructor( private http: HttpClient) { }
 
   getPosts() : Observable<Post[]> { 
-    return of(POSTS);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    return this.http.get<Post[]>(this.postUrl, httpOptions);
+    //return of(POSTS);
 
   }
 
   getPost(id: number): Observable<Post> {
-    return of(POSTS.find(post => post.id === id));
+    const url = `${this.postUrl}/${id}`;
+
+    return this.http.get<Post>(url)
+  //  return of(POSTS.find(post => post.id === id));
   }
 }
