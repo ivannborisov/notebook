@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var http = require('http');
 
 var indexRouter = require('./routes/index');
 
@@ -35,5 +36,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+let port = 3000;
+let server = http.createServer(app);
+
+server.listen(port);
+server.on('listening', () => {
+  console.log(`Server is listening on port ${port}`)
+});
+
 
 module.exports = app;
