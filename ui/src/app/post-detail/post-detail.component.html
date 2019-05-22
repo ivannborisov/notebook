@@ -2,11 +2,35 @@
 
   <h2>{{post.title | uppercase}} Details</h2>
   <div><span>id: </span>{{post.id}}</div>
-  <div>
-    <label>title:
-      <input [(ngModel)]="post.title" placeholder="name"/>
-    </label>
-  </div>
+  <div><span>from: </span>{{post.from}}</div>
 
+  <div>
+   
+    <!-- <label>title:
+      <input [(ngModel)]="post.title" placeholder="name"/>
+    </label> -->
+  </div>
+  <div *ngIf="post.comments && post.comments.length > 0">
+      <div *ngFor="let comment of post.comments">
+        <p>
+          <span>{{comment.from}}</span>
+          {{comment.content}}
+        </p>
+      </div>
+    </div>
+</div>
+<div>
+  <h1>New comment: </h1>
+  <div>From:
+      <input #commentFrom />
+  </div>
+  <div>Content:
+    <input #commentContent />
+  </div>
+  
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="addComment({content: commentContent.value,from: commentFrom.value }); commentContent.value='';commentFrom.value=''">
+    Send
+  </button>
 </div>
 <button (click)="goBack()">go back</button>

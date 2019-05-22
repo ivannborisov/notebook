@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { PostService} from '../post.service';
 
 import { Post } from '../post';
-
+import { Comment } from '../comment';
 
 @Component({
   selector: 'app-post-detail',
@@ -32,5 +32,15 @@ export class PostDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.postService.getPost(id)
       .subscribe(post => this.post = post);
+  }
+
+  addComment(comment: Object): void {
+   
+    if (!comment) { return; }
+    this.postService.addComment(comment as Comment, this.post.id)
+      .subscribe(comment => {
+        console.log(comment)
+        this.post.comments.push(comment);
+      });
   }
 }

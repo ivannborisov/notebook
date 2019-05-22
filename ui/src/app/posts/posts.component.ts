@@ -22,4 +22,12 @@ export class PostsComponent implements OnInit {
       .subscribe(posts => this.posts = posts);
   }
 
+  addPost(post: Object): void {
+   
+    if (!post) { return; }
+    this.postService.addPost(post as Post)
+      .subscribe(post => {
+        this.posts.push(post);
+      });
+  }
 }
