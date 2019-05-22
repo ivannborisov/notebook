@@ -17,9 +17,9 @@ export class DashboardComponent implements OnInit {
   
   ngOnInit() {
 
-    $(document).ready(()=> {
-      alert('Ready')
-    })
+    // $(document).ready(()=> {
+    //   alert('Ready')
+    // })
     this.getPosts();
   }
 

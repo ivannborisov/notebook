@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { POSTS } from './mock-posts';
 import { Post } from './post';
 import { Comment } from './comment';
 
