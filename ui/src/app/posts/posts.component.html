@@ -1,14 +1,15 @@
-<p>
-  {{title}} 
-</p>
-
-<ul class="posts">
-  <li *ngFor="let post of posts">
+<div class="jumbotron">
+  <div class="container">
+    <h1 class="display-3">{{title}}</h1>
+  </div>
+</div>
+<div class="container" *ngFor="let post of posts">
     <a  routerLink="/posts/{{post.id}}"> 
-      <span class="badge">From: {{post.from}}</span> {{post.title}}
+      <h3>{{post.title}}</h3>
     </a>
-  </li>
-</ul>
+    <p>From: {{post.from}} </p>
+</div>
+
 
 <div>
   <h1>New post </h1>
