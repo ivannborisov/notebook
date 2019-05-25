@@ -1,36 +1,50 @@
 <div *ngIf="post">
-
-  <h2>{{post.title | uppercase}} Details</h2>
-  <div><span>id: </span>{{post.id}}</div>
-  <div><span>from: </span>{{post.from}}</div>
-
-  <div>
-   
-    <!-- <label>title:
-      <input [(ngModel)]="post.title" placeholder="name"/>
-    </label> -->
+    <div class="container" style="margin-top:20px;">
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/posts">Posts</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{post.title}}</li>
+          </ol>
+        </nav>
   </div>
-  <div *ngIf="post.comments && post.comments.length > 0">
+  <div class="container">
+    <div>
+      <h3>{{post.title | uppercase}}</h3>
+      <p style="font-style:italic"><span>from: </span>{{post.from}}</p>
+      <div><span class="badge">{{post.created}}</span></div>
+    </div>
+    <hr>
+
+    <div *ngIf="post.comments && post.comments.length > 0">
       <div *ngFor="let comment of post.comments">
+        <p><span>{{comment.from}}</span> <span>{{comment.created}}</span></p>
         <p>
-          <span>{{comment.from}}</span>
           {{comment.content}}
         </p>
+        <hr>
       </div>
+      
     </div>
-</div>
-<div>
-  <h1>New comment: </h1>
-  <div>From:
-      <input #commentFrom />
-  </div>
-  <div>Content:
-    <input #commentContent />
   </div>
   
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="addComment({content: commentContent.value,from: commentFrom.value }); commentContent.value='';commentFrom.value=''">
-    Send
-  </button>
-</div>
-<button (click)="goBack()">go back</button>
+  <div class="container">
+    <hr>
+    <div class="form-group">
+      <h3>New comment: </h3>
+      <div>
+          <label for="commentFrom">From:</label>
+          <input #commentFrom class="form-control"/>
+      </div>
+      <div>
+        <label for="commentContent">Content:</label>
+        <textarea #commentContent class="form-control"></textarea>
+      </div>
+      
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button class="btn btn-primary mb-2" (click)="addComment({content: commentContent.value,from: commentFrom.value }); commentContent.value='';commentFrom.value=''">
+        Send
+      </button>
+    </div>
+  </div>
+

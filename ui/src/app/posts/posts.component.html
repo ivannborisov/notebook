@@ -3,24 +3,30 @@
     <h1 class="display-3">{{title}}</h1>
   </div>
 </div>
-<div class="container" *ngFor="let post of posts">
-    <a  routerLink="/posts/{{post.id}}"> 
-      <h3>{{post.title}}</h3>
-    </a>
-    <p>From: {{post.from}} </p>
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Posts</li>
+        </ol>
+      </nav>
 </div>
+<div class="container" *ngFor="let post of posts">
+  <a  routerLink="/posts/{{post.id}}"> 
+    <h3>{{post.title}}</h3>
+  </a>
+  <p>From: {{post.from}} </p>
+</div>
+  
 
-
-<div>
-  <h1>New post </h1>
-  <label>Content:
-    <input #postTitle />
-  </label>
-  <label>From:
-    <input #postFrom />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="addPost({title: postTitle.value,from: postFrom.value }); postTitle.value='';postFrom.value=''">
-    Send
-  </button>
+<div class="container">
+  <div class="form-group">
+    <h1>New post </h1>
+    <label for="postTitle">Content:</label>
+    <input #postTitle class="form-control" />
+    <label for="postFrom">From:</label>
+    <textarea #postFrom class="form-control"></textarea>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button class="btn btn-primary mb-2" (click)="addPost({title: postTitle.value,from: postFrom.value }); postTitle.value='';postFrom.value=''">Send</button>
+  </div>
 </div>

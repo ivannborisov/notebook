@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from '../post';
 import { PostService } from '../post.service';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-dashboard',
